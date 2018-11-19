@@ -17,6 +17,9 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/start/course', 'CourseController@index')->name('course.start');
+    Route::get('/lections', 'LectionsController@index')->name('lections.list');
+    Route::get('/tests', 'TestsController@index')->name('tests.list');
+    Route::get('/practics', 'PracticController@index')->name('practic.list');
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');
