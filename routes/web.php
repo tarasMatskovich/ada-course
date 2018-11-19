@@ -15,4 +15,8 @@ Route::get('/', 'MainController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/start/course', 'CourseController@index')->name('course.start');
+});
+
+//Route::get('/home', 'HomeController@index')->name('home');
