@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Open+Sans:400,600,700|Oswald:400,500,600,700|Roboto:300,400,500,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
     <title>Язык Ада - обучающий курс</title>
 </head>
@@ -39,6 +40,9 @@
                             <a class="nav-link" href="{{route('register')}}">Зарегистрироваться</a>
                         </li>
                     @else
+                        <li class="nav-item">
+                            <a href="{{route('admin.index')}}" class="nav-link">Админ панель</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Мой кабинет</a>
                         </li>
@@ -105,6 +109,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="{{asset('js/wow.min.js')}}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{asset('js/common.js')}}"></script>
+<script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+@stack('scripts')
 </body>
 </html>

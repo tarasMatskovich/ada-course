@@ -570,6 +570,26 @@ p.test-title {
     margin-right: 20px;
 }
 
+.admin {
+    margin-top: 50px;
+    margin-bottom: 515px;
+}
+
+.admin-lections {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.admin-lections .add-lection {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.create-lection {
+    margin-top: 50px;
+    margin-bottom: 470px;
+}
+
 
 
 

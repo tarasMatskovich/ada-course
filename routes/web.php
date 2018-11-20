@@ -20,6 +20,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/lections', 'LectionsController@index')->name('lections.list');
     Route::get('/tests', 'TestsController@index')->name('tests.list');
     Route::get('/practics', 'PracticController@index')->name('practic.list');
+
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', 'AdminController@index')->name('admin.index');
+        Route::get('/lections', 'AdminLectionsController@index')->name('admin.lections');
+        Route::get('/lections/create', 'AdminLectionsController@create')->name('admin.lections.create');
+    });
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');
