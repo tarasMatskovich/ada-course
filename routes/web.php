@@ -36,6 +36,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/practics/update/{id}', 'AdminPracticController@edit')->name('admin,practics.edit');
         Route::put('/practics/update/{id}', 'AdminPracticController@update')->name('admin.practics.update');
         Route::delete('/practics/delete/{id}', 'AdminPracticController@delete')->name('admin.practics.delete');
+
+        Route::get('/tests', 'AdminTestsController@index')->name('admin.tests');
     });
 });
 

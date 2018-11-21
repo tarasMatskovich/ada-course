@@ -16,7 +16,7 @@
                 <a href="{{route('admin.practics')}}" class="slick-link">Практика</a>
             </li>
             <li class="list-group-item">
-                <a href="" class="slick-link">Тесты</a>
+                <a href="{{route('admin.tests')}}" class="slick-link">Тесты</a>
             </li>
         </ul>
     </div>
