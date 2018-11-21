@@ -12,9 +12,9 @@ class AdminPracticController extends Controller
     {
         $practics = Practic::all();
         $practicsArray = [];
-        foreach ($practicsArray as $practic) {
+        foreach ($practics as $practic) {
             $practicsArray[] = [
-                'actions' => '<a href="' . route('admin.lections.update', ['id' => $practic->id]) . '" class="slick-link"><i class="fas fa-edit"></i></a>&nbsp;<a href="#" class="slick-link" onclick=" var id = ' . $practic->id . '; event.preventDefault(); document.getElementById(\'delete-form-\' + id).submit();"><i class="fas fa-trash-alt"></i></a><form id="delete-form-' . $practic->id . '" style="display: none;" action="' . route('admin.practics.delete', ['id' => $practic->id]) . '" method="POST">' . csrf_field() . '<input type="hidden" name="_method" value="DELETE"></form>',
+                'actions' => '<a href="' . route('admin.practics.update', ['id' => $practic->id]) . '" class="slick-link"><i class="fas fa-edit"></i></a>&nbsp;<a href="#" class="slick-link" onclick=" var id = ' . $practic->id . '; event.preventDefault(); document.getElementById(\'delete-form-\' + id).submit();"><i class="fas fa-trash-alt"></i></a><form id="delete-form-' . $practic->id . '" style="display: none;" action="' . route('admin.practics.delete', ['id' => $practic->id]) . '" method="POST">' . csrf_field() . '<input type="hidden" name="_method" value="DELETE"></form>',
                 'title' => $practic->title
             ];
         }
@@ -65,11 +65,11 @@ class AdminPracticController extends Controller
 
     public function delete(Request $request, $id)
     {
-        $lection = Lection::findOrFail($id);
-        if ($lection->delete()) {
-            return redirect()->route('admin.lections')->with(['success' => 'Лекция ' . $lection->title . ' была успешно удалена']);
+        $practic = Practic::findOrFail($id);
+        if ($practic->delete()) {
+            return redirect()->route('admin.practics')->with(['success' => 'Практика ' . $practic->title . ' была успешно удалена']);
         } else {
-            return redirect()->back()->withErrors(['При удалении лекции произошла ошибка']);
+            return redirect()->back()->withErrors(['При удалении практики произошла ошибка']);
         }
     }
 }

@@ -13,7 +13,7 @@
                 <a href="{{route('admin.lections')}}" class="slick-link">Лекции</a>
             </li>
             <li class="list-group-item">
-                <a href="" class="slick-link">Практика</a>
+                <a href="{{route('admin.practics')}}" class="slick-link">Практика</a>
             </li>
             <li class="list-group-item">
                 <a href="" class="slick-link">Тесты</a>

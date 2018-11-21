@@ -3,7 +3,8 @@
 @push('scripts')
     <script>
         var editor = CKEDITOR.replace( 'text',{
-            filebrowserBrowseUrl : '/elfinder/ckeditor'
+            filebrowserBrowseUrl : '/elfinder/ckeditor',
+            height: '700px'
         } );
     </script>
 @endpush
