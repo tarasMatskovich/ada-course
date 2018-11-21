@@ -28,7 +28,9 @@
     </script>
 @endpush
 
+
 @section('content')
+    @include('messages')
 <section class="admin-lections">
     <div class="container">
         <h3 class="title">

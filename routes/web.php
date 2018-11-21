@@ -25,6 +25,17 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('/lections', 'AdminLectionsController@index')->name('admin.lections');
         Route::get('/lections/create', 'AdminLectionsController@create')->name('admin.lections.create');
+        Route::post('/lections/create', 'AdminLectionsController@store')->name('admin.lections.store');
+        Route::get('/lections/update/{id}', 'AdminLectionsController@edit')->name('admin,lections.edit');
+        Route::put('/lections/update/{id}', 'AdminLectionsController@update')->name('admin.lections.update');
+        Route::delete('/lections/delete/{id}', 'AdminLectionsController@delete')->name('admin.lections.delete');
+
+        Route::get('/practics', 'AdminPracticController@index')->name('admin.practics');
+        Route::get('/practics/create', 'AdminPracticController@create')->name('admin.practics.create');
+        Route::post('/practics/create', 'AdminPracticController@store')->name('admin.practics.store');
+        Route::get('/practics/update/{id}', 'AdminPracticController@edit')->name('admin,practics.edit');
+        Route::put('/practics/update/{id}', 'AdminPracticController@update')->name('admin.practics.update');
+        Route::delete('/practics/delete/{id}', 'AdminPracticController@delete')->name('admin.practics.delete');
     });
 });
 
