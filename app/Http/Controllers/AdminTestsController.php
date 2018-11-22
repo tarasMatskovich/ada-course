@@ -16,7 +16,7 @@ class AdminTestsController extends Controller
         $testsArray = [];
         foreach ($tests as $test) {
             $testsArray[] = [
-                'actions' => '<a href="' . route('admin.practics.update', ['id' => $test->id]) . '" class="slick-link"><i class="fas fa-edit"></i></a>&nbsp;<a href="#" class="slick-link" onclick=" var id = ' . $test->id . '; event.preventDefault(); document.getElementById(\'delete-form-\' + id).submit();"><i class="fas fa-trash-alt"></i></a><form id="delete-form-' . $test->id . '" style="display: none;" action="' . route('admin.practics.delete', ['id' => $test->id]) . '" method="POST">' . csrf_field() . '<input type="hidden" name="_method" value="DELETE"></form>',
+                'actions' => '<a href="' . "#" . '" class="slick-link"><i class="fas fa-edit"></i></a>&nbsp;<a href="#" class="slick-link" onclick=" var id = ' . $test->id . '; event.preventDefault(); document.getElementById(\'delete-form-\' + id).submit();"><i class="fas fa-trash-alt"></i></a><form id="delete-form-' . $test->id . '" style="display: none;" action="' . route('admin.tests.delete', ['id' => $test->id]) . '" method="POST">' . csrf_field() . '<input type="hidden" name="_method" value="DELETE"></form>',
                 'title' => $test->title
             ];
         }
@@ -59,6 +59,27 @@ class AdminTestsController extends Controller
 
         return response([
             'stutus' => 'success'
+        ]);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $test = Test::with("questions")->with('questions.answers')->findOrFail($id);
+
+        if ($test->questions && !$test->questions->isEmpty()) {
+            foreach ($test->questions as $question) {
+                if ($question->answers && !$question->answers->isEmpty()) {
+                    foreach ($question->answers as $answer) {
+                        $answer->delete();
+                    }
+                }
+                $question->delete();
+            }
+        }
+        $test->delete();
+
+        return redirect()->route('admin.tests')->with([
+            'success' => "Тест " . $test->title . " был успешно удален"
         ]);
     }
 

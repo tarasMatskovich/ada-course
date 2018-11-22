@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/tests', 'AdminTestsController@index')->name('admin.tests');
         Route::get('/tests/create', 'AdminTestsController@create')->name('admin.tests.create');
         Route::post('/tests/create', 'AdminTestsController@store')->name('admin.tests.store');
+        Route::delete('/tests/delete/{id}', 'AdminTestsController@delete')->name('admin.tests.delete');
 
 
         // helping routs
