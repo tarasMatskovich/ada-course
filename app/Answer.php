@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    protected $guarded = [];
+
     protected $table = 'questions_answers';
 
     public function  question()

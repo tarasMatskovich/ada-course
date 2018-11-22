@@ -21,6 +21,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tests', 'TestsController@index')->name('tests.list');
     Route::get('/practics', 'PracticController@index')->name('practic.list');
 
+    // группа маршрутов для администраторской панели
+    // TODO сделать посредник, который будет проверять роль!!!
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('/lections', 'AdminLectionsController@index')->name('admin.lections');
@@ -38,6 +40,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/practics/delete/{id}', 'AdminPracticController@delete')->name('admin.practics.delete');
 
         Route::get('/tests', 'AdminTestsController@index')->name('admin.tests');
+        Route::get('/tests/create', 'AdminTestsController@create')->name('admin.tests.create');
+        Route::post('/tests/create', 'AdminTestsController@store')->name('admin.tests.store');
+
+
+        // helping routs
+        Route::get("/tests/question/template", 'AdminTestsController@getQuestionTemplate')->name('admin.tests.getQuestionTemplate');
+        Route::get("/tests/answer/template", 'AdminTestsController@getAnswerTemplate')->name('admin.tests.getAnswerTemplate');
     });
 });
 
