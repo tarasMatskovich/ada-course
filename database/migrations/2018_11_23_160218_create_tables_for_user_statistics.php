@@ -31,6 +31,7 @@ class CreateTablesForUserStatistics extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('test_id');
+            $table->float('estimation')->default(0);
             $table->timestamps();
         });
 

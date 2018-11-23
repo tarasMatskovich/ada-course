@@ -5,7 +5,7 @@
         $("#check-test-form").on('submit', function (e) {
             var questions = $(".test-question");
             questions.each(function (i, question) {
-               var correctAnswer = $(question).find("input[type='checkbox']:checked");
+               var correctAnswer = $(question).find("input[type='radio']:checked");
                if (!correctAnswer.length) {
                    alert('Выберите правильный ответ в одном з вопросов!');
                    e.preventDefault();
@@ -42,7 +42,7 @@
                                                     @foreach($question->answers as $answer)
                                                         <div class="answer">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="question-{{$question->id}}" type="checkbox" value="{{$answer->id}}">
+                                                                <input class="form-check-input" name="question-{{$question->id}}" type="radio" value="{{$answer->id}}">
                                                                 <label class="form-check-label" >
                                                                     {{$answer->answer}}
                                                                 </label>

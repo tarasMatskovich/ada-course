@@ -691,6 +691,34 @@ p.test-title {
     margin-bottom: 5px;
 }
 
+.congrat-title {
+    margin-bottom: 50px;
+}
+
+.estimation-wrapper {
+
+}
+
+.estimation {
+    font-size: 50px;
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.estimation.bad {
+    color: #dc3545;
+}
+
+.estimation.norm {
+    color: #FFC108;
+}
+
+.estimation.good {
+    color: #28a745;
+}
+
 
 
 

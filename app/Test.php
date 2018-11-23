@@ -8,6 +8,8 @@ class Test extends Model
 {
     protected $guarded = [];
 
+    public const MAX_ESTIMATION = 5;
+
     protected $table = 'tests';
 
     public function questions()

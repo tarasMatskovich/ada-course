@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(TestVisit::class, 'user_id', 'id');
     }
+
+    public function testTries()
+    {
+        return $this->hasMany(TestTry::class, "user_id", "id");
+    }
 }
