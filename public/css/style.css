@@ -675,6 +675,22 @@ p.test-title {
     margin-left: 10px;
 }
 
+.height-wrapper {
+    min-height: 770px;
+}
+
+.test-questions .test-question {
+    margin-bottom: 20px;
+}
+
+.test-questions .test-question .question-title {
+    font-weight: bold;
+}
+
+.test-questions .test-question .answer {
+    margin-bottom: 5px;
+}
+
 
 
 

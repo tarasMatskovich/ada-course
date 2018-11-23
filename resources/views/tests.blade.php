@@ -28,18 +28,15 @@
                     </div>
                     <div class="lections wow zoomInLeft">
                         <h3>Список всех тестов</h3>
-                        <ol class="rounded">
-                            <li><a href="#">Тесты к лекции 1</a></li>
-                            <li><a href="#">Тесты к лекции 2</a></li>
-                            <li><a href="#">Тесты к лекции 3</a></li>
-                            <li><a href="#">Тесты к лекции 4</a></li>
-                            <li><a href="#">Тесты к лекции 5</a></li>
-                            <li><a href="#">Тесты к лекции 6</a></li>
-                            <li><a href="#">Тесты к лекции 7</a></li>
-                            <li><a href="#">Тесты к лекции 8</a></li>
-                            <li><a href="#">Тесты к лекции 9</a></li>
-                            <li><a href="#">Тесты к лекции 10</a></li>
-                        </ol>
+                        @if($tests and !$tests->isEmpty())
+                            <ol class="rounded">
+                                @foreach($tests as $test)
+                                    <li><a href="{{route('test', ['id' => $test->id])}}">{{$test->title}}</a></li>
+                                @endforeach
+                            </ol>
+                        @else
+                            <p>Практических заданий пока нет на сайте.</p>
+                        @endif
                     </div>
                 </div>
             </div>

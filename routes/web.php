@@ -17,9 +17,14 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/start/course', 'CourseController@index')->name('course.start');
+
     Route::get('/lections', 'LectionsController@index')->name('lections.list');
     Route::get('/lection/{id}', 'LectionsController@show')->name('lection');
+
     Route::get('/tests', 'TestsController@index')->name('tests.list');
+    Route::get('/test/{id}', 'TestsController@show')->name('test');
+    Route::post('/test/check/{id}', 'TestsController@check')->name('test.check');
+
     Route::get('/practics', 'PracticController@index')->name('practic.list');
     Route::get('/practic/{id}', 'PracticController@show')->name('practic');
 

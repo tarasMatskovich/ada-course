@@ -65,8 +65,9 @@
     </div>
 </secion>
 <!-- END OF NAVBER SECTION -->
-
-@yield('content')
+<div class="height-wrapper">
+    @yield('content')
+</div>
 
 <footer>
     <div class="container">
