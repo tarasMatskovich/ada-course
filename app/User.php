@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(TestTry::class, "user_id", "id");
     }
+
+    public function roles()
+    {
+        return $this->hasManyThrough(Role::class, RoleUser::class, 'user_id', 'id', 'id');
+    }
 }

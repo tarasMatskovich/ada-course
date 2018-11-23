@@ -51,18 +51,24 @@
                         if (questionTitle.val()) {
                             // checking for existing a correct answer in question
                             if (correctAnswerIsExist) {
-                                var answers = [];
-                                answersJQ.each(function (i, answer) {
-                                    answers.unshift({
-                                        answer: $(answer).val(),
-                                        correct: $(answer).prop('checked')
+                                if (correctAnswerIsExist > 1) {
+                                    var error ="Правильный ответ в вопросе может быть только один!";
+                                    errors.push(error);
+                                    alert(error);
+                                } else {
+                                    var answers = [];
+                                    answersJQ.each(function (i, answer) {
+                                        answers.unshift({
+                                            answer: $(answer).val(),
+                                            correct: $(answer).prop('checked')
+                                        });
                                     });
-                                });
-                                // new qestion in test
-                                test.questions.push({
-                                    title: questionTitle.val(),
-                                    answers: answers
-                                });
+                                    // new qestion in test
+                                    test.questions.push({
+                                        title: questionTitle.val(),
+                                        answers: answers
+                                    });
+                                }
                             } else {
                                 var error ="Выберите правильный ответ";
                                 errors.push(error);

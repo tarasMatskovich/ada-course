@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Test;
 use App\TestTry;
 use App\TestVisit;
@@ -12,7 +13,6 @@ class TestsController extends Controller
 {
     public function index()
     {
-        $tests = Test::get();
         return view('tests', [
             'tests' => $tests
         ]);
