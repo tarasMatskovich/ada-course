@@ -18,8 +18,10 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/start/course', 'CourseController@index')->name('course.start');
     Route::get('/lections', 'LectionsController@index')->name('lections.list');
+    Route::get('/lection/{id}', 'LectionsController@show')->name('lection');
     Route::get('/tests', 'TestsController@index')->name('tests.list');
     Route::get('/practics', 'PracticController@index')->name('practic.list');
+    Route::get('/practic/{id}', 'PracticController@show')->name('practic');
 
     // группа маршрутов для администраторской панели
     // TODO сделать посредник, который будет проверять роль!!!

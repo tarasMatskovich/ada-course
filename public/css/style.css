@@ -219,17 +219,17 @@ hr.big-deliver {
 
 
 
-.course .main-title {
+.main-title {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
 
-.course .left-menu li a {
+.left-menu li a {
 	color: #74C8D0;
 	transition: all .1s ease-in;
 }
 
-.course .left-menu li a:hover {
+.left-menu li a:hover {
 	color: #3E9DA6;
 	text-decoration: none;
 }
@@ -683,7 +683,7 @@ p.test-title {
 
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
-	.course .left-menu {
+    .left-menu {
 		margin-bottom: 20px;
 	}
 }

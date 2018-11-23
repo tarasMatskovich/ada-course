@@ -28,18 +28,16 @@
                     </div>
                     <div class="lections wow zoomInLeft">
                         <h3>Список всех лекций</h3>
-                        <ol class="rounded">
-                            <li><a href="#">Лекция 1</a></li>
-                            <li><a href="#">Лекция 2</a></li>
-                            <li><a href="#">Лекция 3</a></li>
-                            <li><a href="#">Лекция 4</a></li>
-                            <li><a href="#">Лекция 5</a></li>
-                            <li><a href="#">Лекция 6</a></li>
-                            <li><a href="#">Лекция 7</a></li>
-                            <li><a href="#">Лекция 8</a></li>
-                            <li><a href="#">Лекция 9</a></li>
-                            <li><a href="#">Лекция 10</a></li>
-                        </ol>
+                        @if($lections and !$lections->isEmpty())
+                            <ol class="rounded">
+                                @foreach($lections as $lection)
+                                    <li><a href="{{route('lection', ['id' => $lection->id])}}">{{$lection->title}}</a></li>
+                                @endforeach
+                            </ol>
+                        @else
+                            <p>Лекций пока нет на сайте.</p>
+                        @endif
+
                     </div>
                 </div>
             </div>
