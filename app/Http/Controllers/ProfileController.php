@@ -30,7 +30,7 @@ class ProfileController extends Controller
         $testsProgress = 0;
         if (!auth()->user()->visitedTests->isEmpty()) {
             $totalTests = Test::get(['id'])->count();
-            if ($totalLections > 0) {
+            if ($totalTests > 0) {
                 $testsProgress = round((auth()->user()->visitedTests->count() / $totalTests) * 100, 2);
             }
         }

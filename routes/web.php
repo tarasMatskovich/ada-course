@@ -30,6 +30,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
 
+    Route::get('/search', 'SearchController@index')->name('search');
+
     // группа маршрутов для администраторской панели
     Route::group(['prefix' => 'admin', 'middleware' => 'checkRights'], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');

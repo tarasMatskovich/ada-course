@@ -43,9 +43,11 @@
                             <a class="nav-link" href="{{route('register')}}">Зарегистрироваться</a>
                         </li>
                     @else
-                        <li class="nav-item">
-                            <a href="{{route('admin.index')}}" class="nav-link">Админ панель</a>
-                        </li>
+                        @if(auth()->user()->can('manage'))
+                            <li class="nav-item">
+                                <a href="{{route('admin.index')}}" class="nav-link">Админ панель</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('profile')}}">Мой кабинет</a>
                         </li>
@@ -57,9 +59,9 @@
                         </li>
                     @endguest
                 </ul>
-                <form class="form-inline my-2 my-lg-0 search-form">
+                <form class="form-inline my-2 my-lg-0 search-form" method="GET" action="{{route('search')}}">
                     <i class="fas fa-search"></i>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                    <input class="form-control mr-sm-2" name="query" type="search" placeholder="Поиск" aria-label="Поиск">
                 </form>
             </div>
         </nav>
