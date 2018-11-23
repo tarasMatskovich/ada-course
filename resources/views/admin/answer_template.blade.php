@@ -3,4 +3,5 @@
     <label class="form-check-label">
         {{$answer}}
     </label>
+    <i class="fa fa-times delete-answer"></i>
 </div>

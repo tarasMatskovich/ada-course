@@ -665,6 +665,16 @@ p.test-title {
     cursor: pointer;
 }
 
+.answers .answer {
+    position: relative;
+}
+
+.delete-answer {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 
 
 

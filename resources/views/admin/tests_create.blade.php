@@ -109,6 +109,13 @@
             });
         });
 
+        $(document).on('click', ".delete-answer", function () {
+            var answer = $(this).parent();
+            $(answer).fadeOut(300, function () {
+                $(answer).remove();
+            });
+        });
+
     </script>
 @endpush
 
