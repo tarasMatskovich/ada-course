@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveLectionRequest;
+use App\Http\Requests\UpdateLectionRequest;
 use Illuminate\Http\Request;
 use App\Lection;
 
@@ -51,7 +52,7 @@ class AdminLectionsController extends Controller
         return view('admin.lections_edit', ['lection' => $lection]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateLectionRequest $request, $id)
     {
         $lection = Lection::findOrFail($id);
         $lection->fill($request->except('_token'));

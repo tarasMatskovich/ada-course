@@ -21,4 +21,9 @@ class Test extends Model
     {
         return $this->hasOne(TestTry::class, 'test_id', 'id');
     }
+
+    public function lection()
+    {
+        return $this->belongsTo(Lection::class,'id', 'lection_id');
+    }
 }

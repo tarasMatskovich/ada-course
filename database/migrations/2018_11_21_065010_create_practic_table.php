@@ -17,6 +17,7 @@ class CreatePracticTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('text');
+            $table->integer('lection_id');
             $table->timestamps();
         });
     }

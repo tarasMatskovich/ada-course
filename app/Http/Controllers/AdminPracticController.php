@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePracticRequest;
+use App\Http\Requests\UpdatePracticRequest;
 use Illuminate\Http\Request;
 
 use App\Practic;
@@ -31,7 +33,7 @@ class AdminPracticController extends Controller
         return view('admin.practics_create');
     }
 
-    public function store(Request $request)
+    public function store(StorePracticRequest $request)
     {
         $data = $request->except('_token');
 
@@ -51,7 +53,7 @@ class AdminPracticController extends Controller
         return view('admin.practics_edit', ['practic' => $practic]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdatePracticRequest $request, $id)
     {
         $practic = Practic::findOrFail($id);
         $practic->fill($request->except('_token'));

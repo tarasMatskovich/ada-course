@@ -70,12 +70,13 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        $roleUser = new RoleUser();
-        $roleUser->user_id = $user->id;
-        $roleUser->role_id = Role::where(['name' => 'Guest'])->first()->id;
-        $roleUser->save();
-
+        $guestRole = Role::where(['name' => 'Guest'])->first();
+        if ($guestRole) {
+            $roleUser = new RoleUser();
+            $roleUser->user_id = $user->id;
+            $roleUser->role_id = $guestRole->id;
+            $roleUser->save();
+        }
         return $user;
     }
 }

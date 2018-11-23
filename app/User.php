@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->hasManyThrough(Role::class, RoleUser::class, 'user_id', 'id', 'id');
+        return $this->hasManyThrough(Role::class, RoleUser::class, 'user_id', 'id', 'id', 'role_id');
     }
 }

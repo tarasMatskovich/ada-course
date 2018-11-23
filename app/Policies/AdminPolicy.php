@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Role;
 use App\User;
+use DB;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AdminPolicy
@@ -20,7 +21,7 @@ class AdminPolicy
 
     }
 
-    public function manage(User $user)
+    public function admin(User $user)
     {
         foreach ($user->roles as $role) {
             if ($role->name == 'Administrator') {

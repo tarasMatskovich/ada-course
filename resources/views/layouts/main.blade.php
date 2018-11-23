@@ -43,7 +43,7 @@
                             <a class="nav-link" href="{{route('register')}}">Зарегистрироваться</a>
                         </li>
                     @else
-                        @if(auth()->user()->can('manage'))
+                        @if(auth()->user()->can('admin', App\Role::class))
                             <li class="nav-item">
                                 <a href="{{route('admin.index')}}" class="nav-link">Админ панель</a>
                             </li>

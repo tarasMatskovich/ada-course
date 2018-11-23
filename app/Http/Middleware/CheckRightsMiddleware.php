@@ -16,7 +16,7 @@ class CheckRightsMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->cant('manage', Role::class)) {
+        if (auth()->user()->cant('admin', Role::class)) {
             return redirect()->route('index');
         }
         return $next($request);
