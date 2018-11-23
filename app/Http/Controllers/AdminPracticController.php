@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePracticRequest;
 use App\Http\Requests\UpdatePracticRequest;
+use App\Lection;
 use Illuminate\Http\Request;
 
 use App\Practic;
@@ -30,7 +31,10 @@ class AdminPracticController extends Controller
 
     public function create()
     {
-        return view('admin.practics_create');
+        $lections = Lection::all();
+        return view('admin.practics_create', [
+            'lections' => $lections
+        ]);
     }
 
     public function store(StorePracticRequest $request)
@@ -38,6 +42,7 @@ class AdminPracticController extends Controller
         $data = $request->except('_token');
 
         $practic = new Practic($data);
+        $practic->lection_id = $data['lection_id'];
 
         if ($practic->save()) {
             return redirect()->route('admin.practics')->with(['success' => 'Практика ' . $practic->title . ' была успешно добавлена']);
@@ -49,14 +54,19 @@ class AdminPracticController extends Controller
     public function edit(Request $request, $id)
     {
         $practic = Practic::findOrFail($id);
+        $lections = Lection::all();
 
-        return view('admin.practics_edit', ['practic' => $practic]);
+        return view('admin.practics_edit', [
+            'practic' => $practic,
+            'lections' => $lections
+        ]);
     }
 
     public function update(UpdatePracticRequest $request, $id)
     {
         $practic = Practic::findOrFail($id);
         $practic->fill($request->except('_token'));
+        $practic->lection_id = $request->lection_id;
 
         if ($practic->update()) {
             return redirect()->route('admin.practics')->with(['success' => 'Практика ' . $practic->title . ' была успешно редактирована']);

@@ -22,6 +22,15 @@
                     <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{old('title')}}" placeholder="Тема практического задания" name="title" id="lectionTitle">
                 </div>
                 <div class="form-group">
+                    <label for="lectionSelect">Выберите лекцию, для которй будет создано даное практическое задание:</label>
+                    <select name="lection_id" id="lection" class="form-control">
+                        <option value=""></option>
+                        @foreach($lections as $lection)
+                            <option value="{{$lection->id}}">{{$lection->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="lectionText">Введите содержание практического задания</label>
                     <textarea name="text" id="lectionText" rows="50" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}">{{old('text')}}</textarea>
                 </div>
