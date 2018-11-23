@@ -31,8 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', 'ProfileController@index')->name('profile');
 
     // группа маршрутов для администраторской панели
-    // TODO сделать посредник, который будет проверять роль!!!
-    Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'admin', 'middleware' => 'checkRights'], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('/lections', 'AdminLectionsController@index')->name('admin.lections');
         Route::get('/lections/create', 'AdminLectionsController@create')->name('admin.lections.create');
@@ -60,4 +59,3 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
-//Route::get('/home', 'HomeController@index')->name('home');

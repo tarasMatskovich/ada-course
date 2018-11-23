@@ -13,6 +13,7 @@ class TestsController extends Controller
 {
     public function index()
     {
+        $tests = Test::get();
         return view('tests', [
             'tests' => $tests
         ]);
