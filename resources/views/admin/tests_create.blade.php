@@ -37,59 +37,67 @@
         {
             var errors = [];
             if (totalCount > 0) {
-                var testTitle = ($("#lectionTitle"));
-                var test = {};
-                if (testTitle.val()) {
-                    test.title = testTitle.val();
-                    test.questions = [];
-                    var questions = $(".questions .question");
-                    questions.each(function (i, question) {
-                        var questionTitle = $(question).find("input[name='questions[]']");
-                        var answersJQ = $(question).find(".answer input[type='checkbox']");
-                        var correctAnswer = $(question).find(".answer input[type='checkbox']:checked");
-                        var correctAnswerIsExist = correctAnswer.length;
-                        if (questionTitle.val()) {
-                            // checking for existing a correct answer in question
-                            if (correctAnswerIsExist) {
-                                if (correctAnswerIsExist > 1) {
-                                    var error ="Правильный ответ в вопросе может быть только один!";
+                var lection_id = $("#lection").val();
+                if (lection_id) {
+                    var testTitle = ($("#lectionTitle"));
+                    var test = {};
+                    if (testTitle.val()) {
+                        test.title = testTitle.val();
+                        test.questions = [];
+                        test.lection_id = lection_id;
+                        var questions = $(".questions .question");
+                        questions.each(function (i, question) {
+                            var questionTitle = $(question).find("input[name='questions[]']");
+                            var answersJQ = $(question).find(".answer input[type='checkbox']");
+                            var correctAnswer = $(question).find(".answer input[type='checkbox']:checked");
+                            var correctAnswerIsExist = correctAnswer.length;
+                            if (questionTitle.val()) {
+                                // checking for existing a correct answer in question
+                                if (correctAnswerIsExist) {
+                                    if (correctAnswerIsExist > 1) {
+                                        var error ="Правильный ответ в вопросе может быть только один!";
+                                        errors.push(error);
+                                        alert(error);
+                                    } else {
+                                        var answers = [];
+                                        answersJQ.each(function (i, answer) {
+                                            answers.unshift({
+                                                answer: $(answer).val(),
+                                                correct: $(answer).prop('checked')
+                                            });
+                                        });
+                                        // new qestion in test
+                                        test.questions.push({
+                                            title: questionTitle.val(),
+                                            answers: answers
+                                        });
+                                    }
+                                } else {
+                                    var error ="Выберите правильный ответ";
                                     errors.push(error);
                                     alert(error);
-                                } else {
-                                    var answers = [];
-                                    answersJQ.each(function (i, answer) {
-                                        answers.unshift({
-                                            answer: $(answer).val(),
-                                            correct: $(answer).prop('checked')
-                                        });
-                                    });
-                                    // new qestion in test
-                                    test.questions.push({
-                                        title: questionTitle.val(),
-                                        answers: answers
-                                    });
                                 }
                             } else {
-                                var error ="Выберите правильный ответ";
+                                var error ="Заполните поле Текст вопроса";
                                 errors.push(error);
                                 alert(error);
                             }
-                        } else {
-                            var error ="Заполните поле Текст вопроса";
-                            errors.push(error);
-                            alert(error);
-                        }
-                    });
-                    if (errors.length === 0) {
-                        // test is completed
-                        console.log(test);
-                        console.log("AJAX");
-                        axios.post(createTestRoute, {params: {test:test}}).then(function (res) {
-                            location=redirectRoute;
                         });
+                        if (errors.length === 0) {
+                            // test is completed
+                            console.log(test);
+                            console.log("AJAX");
+                            axios.post(createTestRoute, {params: {test:test}}).then(function (res) {
+                                location=redirectRoute;
+                            });
+                        }
+                    } else {
+                        var error = 'Заполните поле Название Теста';
+                        errors.push(error);
+                        alert(error);
                     }
                 } else {
-                    var error = 'Заполните поле Название Теста';
+                    var error = "Выберите лекцию, для которй будет создан даный тест";
                     errors.push(error);
                     alert(error);
                 }
@@ -136,6 +144,15 @@
                 <div class="form-group">
                     <label for="lectionTitle">Введите название теста</label>
                     <input required type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{old('title')}}" placeholder="Название теста" name="title" id="lectionTitle">
+                </div>
+                <div class="form-group">
+                    <label for="lectionSelect">Выберите лекцию, для которй будет создан даный тест:</label>
+                    <select name="lection_id" id="lection" class="form-control">
+                        <option value=""></option>
+                        @foreach($lections as $lection)
+                            <option value="{{$lection->id}}">{{$lection->title}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <p>
                     Вопросов: <span class="slick-text" id="counter">0</span>

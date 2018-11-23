@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Lection;
 use App\Question;
 use App\Test;
 use Illuminate\Http\Request;
@@ -30,11 +31,13 @@ class AdminTestsController extends Controller
 
     public function create()
     {
+        $lections = Lection::all();
         return view('admin.tests_create', [
             'getQuestionTemplateRoute' => route('admin.tests.getQuestionTemplate'),
             'getAnswerTemplateRoute' => route('admin.tests.getAnswerTemplate'),
             'redirectRoute' => route('admin.tests'),
-            'createTestRoute' => route('admin.tests.store')
+            'createTestRoute' => route('admin.tests.store'),
+            'lections' => $lections
         ]);
     }
 
@@ -43,6 +46,7 @@ class AdminTestsController extends Controller
         $testData = $request->params['test'];
         $test = new Test();
         $test->title = $testData['title'];
+        $test->lection_id = $testData['lection_id'];
         $test->save();
         foreach ($testData['questions'] as $question) {
             $quest = new Question();
