@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/practics', 'PracticController@index')->name('practic.list');
     Route::get('/practic/{id}', 'PracticController@show')->name('practic');
 
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+
     // группа маршрутов для администраторской панели
     // TODO сделать посредник, который будет проверять роль!!!
     Route::group(['prefix' => 'admin'], function () {

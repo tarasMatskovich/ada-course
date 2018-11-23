@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/loading-bar.css')}}"/>
 
     <title>Язык Ада - обучающий курс</title>
 </head>
@@ -46,7 +47,7 @@
                             <a href="{{route('admin.index')}}" class="nav-link">Админ панель</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Мой кабинет</a>
+                            <a class="nav-link" href="{{route('profile')}}">Мой кабинет</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
@@ -92,7 +93,7 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Мой кабинет</a>
+                            <a class="nav-link" href="{{route('profile')}}">Мой кабинет</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
@@ -118,6 +119,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="{{asset('js/common.js')}}"></script>
 <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript" src="{{asset("js/loading-bar.js")}}"></script>
 @stack('scripts')
 </body>
 </html>
