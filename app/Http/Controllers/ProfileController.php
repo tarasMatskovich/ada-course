@@ -45,6 +45,7 @@ class ProfileController extends Controller
                 'try' => $try
             ];
         }
+
         return view('profile', [
             'lectionProgress' => $lectionProgress,
             'practicsProgress' => $practicsProgress,

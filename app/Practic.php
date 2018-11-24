@@ -13,6 +13,6 @@ class Practic extends Model
 
     public function lection()
     {
-        return $this->belongsTo(Lection::class,'id', 'lection_id');
+        return $this->belongsTo(Lection::class,'lection_id', 'id');
     }
 }

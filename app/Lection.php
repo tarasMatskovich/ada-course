@@ -18,6 +18,6 @@ class Lection extends Model
 
     public function tests()
     {
-        return $this->hasMany(Practic::class, 'lection_id', 'id');
+        return $this->hasMany(Test::class, 'lection_id', 'id');
     }
 }

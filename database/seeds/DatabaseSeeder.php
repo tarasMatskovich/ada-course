@@ -32,5 +32,23 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Ankur'
             ]
         );
+
+        factory(\App\Role::class)->create(
+            [
+                'name' => 'Administrator'
+            ]
+        );
+
+        factory(\App\Role::class)->create(
+            [
+                'name' => 'Moderator'
+            ]
+        );
+
+        factory(\App\Role::class)->create(
+            [
+                'name' => 'Guest'
+            ]
+        );
     }
 }

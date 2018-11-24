@@ -6,6 +6,7 @@ use App\Answer;
 use App\Lection;
 use App\Question;
 use App\Test;
+use App\TestTry;
 use Illuminate\Http\Request;
 
 class AdminTestsController extends Controller
@@ -82,6 +83,14 @@ class AdminTestsController extends Controller
         }
         $test->delete();
         // TODO Сделать удаление пользовательской статистики при удалени теста
+        $testTries = TestTry::where(['test_id' => $id])->get();
+
+        foreach($testTries as $try) {
+            foreach ($try->history as $answer) {
+                $answer->delete();
+            }
+            $try->delete();
+        }
 
         return redirect()->route('admin.tests')->with([
             'success' => "Тест " . $test->title . " был успешно удален"
