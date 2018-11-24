@@ -27,7 +27,7 @@ return array(
     */
     'disks' => [
         'upload' => [ // имя нашего диска
-            'URL' => 'http://ada/img/uploads', // его ссылка
+            'URL' => 'http://adacourse.kl.com.ua/img/uploads', // его ссылка
             'alias' => 'Downloads', // имя в редакторе
         ]
     ],

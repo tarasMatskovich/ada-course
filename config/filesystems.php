@@ -66,7 +66,7 @@ return [
         'upload' => [ // Вот он
             'driver' => 'local',
             'root' => public_path().'/img/uploads',
-            'url' => 'http://ada/img/uploads',
+            'url' => 'http://adacourse.kl.com.ua/img/uploads',
             'visibility' => 'public',
         ],
     ],
