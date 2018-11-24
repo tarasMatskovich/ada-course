@@ -729,6 +729,22 @@ p.test-title {
     margin-bottom: 20px;
 }
 
+.p-lection .related {
+    margin-top: 50px;
+}
+
+.p-lection .related h5 {
+    margin-bottom: 20px;
+}
+
+.p-lection .related .practics {
+    margin-bottom: 20px;
+}
+
+.p-lection .related .practics:last-child {
+    margin-bottom: 0;
+}
+
 
 
 

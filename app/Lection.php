@@ -10,4 +10,14 @@ class Lection extends Model
         'title',
         'text',
     ];
+
+    public function practics()
+    {
+        return $this->hasMany(Practic::class, 'lection_id', 'id');
+    }
+
+    public function tests()
+    {
+        return $this->hasMany(Practic::class, 'lection_id', 'id');
+    }
 }

@@ -18,7 +18,7 @@ class LectionsController extends Controller
 
     public function show(Request $request, $id)
     {
-        $lection = Lection::findOrFail($id);
+        $lection = Lection::with('practics')->with('tests')->findOrFail($id);
 
         if (!auth()->user()->visitedLections()->where(['lection_id' => $lection->id])->first()) {
             $lectionVisit = new LectionVisit();
